@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Portal | Profile Setup</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-university"></i>
+                <span>University Portal</span>
+            </div>
+            <div class="nav-actions">
+                <a href="dashboard.html" class="btn btn-outline">
+                    <i class="fas fa-tachometer-alt"></i> Dashboard
+                </a>
+                <a href="index.html" class="btn btn-outline">
+                    <i class="fas fa-home"></i> Home
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="profile-container">
+        <div class="profile-header">
+            <div class="profile-avatar">
+                <div class="avatar-placeholder">
+                    <i class="fas fa-user"></i>
+                </div>
+                <button class="btn-avatar-upload">
+                    <i class="fas fa-camera"></i> Change Photo
+                </button>
+            </div>
+            <div class="profile-info">
+                <h1>Complete Your Profile</h1>
+                <p>Please provide the following information to complete your account setup</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="profileProgress" style="width: 40%"></div>
+                </div>
+                <p class="progress-text">Profile completion: <span id="progressPercent">40%</span></p>
+            </div>
+        </div>
+
+        <div class="profile-stepper">
+            <div class="step active">
+                <div class="step-number">1</div>
+                <div class="step-label">Basic Info</div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-label">Account Setup</div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-label">Review</div>
+            </div>
+        </div>
+
+        <form class="profile-form" id="profileForm">
+            <!-- Step 1: Basic Information -->
+            <div class="form-step active" id="step1">
+                <h2><i class="fas fa-info-circle"></i> Basic Information</h2>
+                
+                <div class="form-group">
+                    <label for="profileFocalPerson">
+                        <i class="fas fa-user-tie"></i> Focal Person (Optional)
+                    </label>
+                    <input type="text" id="profileFocalPerson" 
+                           placeholder="Name of focal person or supervisor">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="userType">
+                            <i class="fas fa-user-tag"></i> I am a...
+                        </label>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="userType" value="employee" checked>
+                                <div class="radio-content">
+                                    <i class="fas fa-briefcase"></i>
+                                    <span>Employee</span>
+                                </div>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="userType" value="student">
+                                <div class="radio-content">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span>Student</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="employeeNumber" id="numberLabel">
+                            <i class="fas fa-id-badge"></i> Employee Number
+                        </label>
+                        <input type="text" id="employeeNumber" required 
+                               placeholder="EMP-00123">
+                    </div>
+                    <div class="form-group">
+                        <label for="profileDepartment">
+                            <i class="fas fa-building"></i> Department
+                        </label>
+                        <select id="profileDepartment" required>
+                            <option value="">Select Department</option>
+                            <option value="computer-science">Computer Science</option>
+                            <option value="business">Business Administration</option>
+                            <option value="engineering">Engineering</option>
+                            <option value="medicine">Medicine</option>
+                            <option value="arts">Arts & Humanities</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="profileCampus">
+                            <i class="fas fa-map-marker-alt"></i> Campus
+                        </label>
+                        <select id="profileCampus" required>
+                            <option value="">Select Campus</option>
+                            <option value="main">Main Campus</option>
+                            <option value="north">North Campus</option>
+                            <option value="south">South Campus</option>
+                            <option value="east">East Campus</option>
+                            <option value="west">West Campus</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="codeNumber">
+                            <i class="fas fa-qrcode"></i> Code Number
+                        </label>
+                        <input type="text" id="codeNumber" required 
+                               placeholder="Enter your code number">
+                        <button type="button" class="btn-generate" id="generateCode">
+                            <i class="fas fa-sync-alt"></i> Generate
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Additional Information -->
+            <div class="form-step" id="step2">
+                <h2><i class="fas fa-cog"></i> Additional Information</h2>
+                
+                <div class="form-group">
+                    <label for="profilePhone">
+                        <i class="fas fa-phone"></i> Phone Number
+                    </label>
+                    <input type="tel" id="profilePhone" 
+                           placeholder="+1 (234) 567-8900">
+                </div>
+
+                <div class="form-group">
+                    <label for="profileAddress">
+                        <i class="fas fa-home"></i> Address
+                    </label>
+                    <textarea id="profileAddress" rows="3" 
+                              placeholder="Enter your full address"></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="emergencyContact">
+                            <i class="fas fa-phone-alt"></i> Emergency Contact
+                        </label>
+                        <input type="text" id="emergencyContact" 
+                               placeholder="Name and phone number">
+                    </div>
+                    <div class="form-group">
+                        <label for="bloodGroup">
+                            <i class="fas fa-tint"></i> Blood Group
+                        </label>
+                        <select id="bloodGroup">
+                            <option value="">Select Blood Group</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="profileBio">
+                        <i class="fas fa-edit"></i> Bio (Optional)
+                    </label>
+                    <textarea id="profileBio" rows="4" 
+                              placeholder="Tell us about yourself..."></textarea>
+                    <div class="char-counter">
+                        <span id="charCount">0</span>/500 characters
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Review -->
+            <div class="form-step" id="step3">
+                <h2><i class="fas fa-check-circle"></i> Review Your Information</h2>
+                
+                <div class="review-section">
+                    <h3><i class="fas fa-user"></i> Personal Details</h3>
+                    <div class="review-grid">
+                        <div class="review-item">
+                            <strong>Full Name:</strong>
+                            <span id="reviewName">John Doe</span>
+                        </div>
+                        <div class="review-item">
+                            <strong>Email:</strong>
+                            <span id="reviewEmail">john@example.com</span>
+                        </div>
+                        <div class="review-item">
+                            <strong>User Type:</strong>
+                            <span id="reviewUserType">Employee</span>
+                        </div>
+                        <div class="review-item">
+                            <strong>ID Number:</strong>
+                            <span id="reviewIdNumber">EMP-00123</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-section">
+                    <h3><i class="fas fa-building"></i> Department Details</h3>
+                    <div class="review-grid">
+                        <div class="review-item">
+                            <strong>Department:</strong>
+                            <span id="reviewDepartment">Computer Science</span>
+                        </div>
+                        <div class="review-item">
+                            <strong>Campus:</strong>
+                            <span id="reviewCampus">Main Campus</span>
+                        </div>
+                        <div class="review-item">
+                            <strong>Code Number:</strong>
+                            <span id="reviewCode">CS-2024-001</span>
+                        </div>
+                        <div class="review-item">
+                            <strong>Focal Person:</strong>
+                            <span id="reviewFocal">Dr. Smith</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-section">
+                    <h3><i class="fas fa-file-signature"></i> Terms & Conditions</h3>
+                    <div class="terms-box">
+                        <p>By completing your profile, you agree to:</p>
+                        <ul>
+                            <li>Provide accurate information</li>
+                            <li>Adhere to university policies</li>
+                            <li>Maintain confidentiality of your credentials</li>
+                            <li>Update information when changes occur</li>
+                        </ul>
+                        <div class="form-group checkbox">
+                            <input type="checkbox" id="profileTerms" required>
+                            <label for="profileTerms">
+                                I confirm that all information provided is accurate
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form Navigation -->
+            <div class="form-navigation">
+                <button type="button" class="btn btn-outline" id="prevBtn" disabled>
+                    <i class="fas fa-arrow-left"></i> Previous
+                </button>
+                <button type="button" class="btn btn-primary" id="nextBtn">
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+                <button type="submit" class="btn btn-success" id="submitBtn" style="display: none;">
+                    <i class="fas fa-check"></i> Complete Profile
+                </button>
+            </div>
+        </form>
+
+        <div class="profile-sidebar">
+            <div class="sidebar-card">
+                <h3><i class="fas fa-lightbulb"></i> Tips</h3>
+                <ul class="tips-list">
+                    <li>Ensure all information is accurate</li>
+                    <li>Keep your ID number confidential</li>
+                    <li>Update your profile regularly</li>
+                    <li>Contact admin for changes</li>
+                </ul>
+            </div>
+            <div class="sidebar-card">
+                <h3><i class="fas fa-question-circle"></i> Need Help?</h3>
+                <p>Contact the support team for assistance with profile setup.</p>
+                <a href="mailto:support@universityportal.edu" class="btn btn-outline btn-small">
+                    <i class="fas fa-envelope"></i> Email Support
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <div class="modal-success">
+                <i class="fas fa-check-circle"></i>
+                <h2>Profile Completed!</h2>
+                <p>Your profile has been successfully set up.</p>
+                <div class="modal-actions">
+                    <a href="dashboard.html" class="btn btn-primary">
+                        Go to Dashboard
+                    </a>
+                    <a href="departments.html" class="btn btn-outline">
+                        Browse Departments
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Portal | Home</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-university"></i>
+                <span>University Portal</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="auth.html"><i class="fas fa-user"></i> Login/Signup</a></li>
+                <li><a href="departments.html"><i class="fas fa-building"></i> Departments</a></li>
+                <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Welcome to University Portal</h1>
+            <p class="subtitle">Comprehensive management system for students and employees</p>
+            <div class="hero-buttons">
+                <a href="auth.html?tab=login" class="btn btn-primary">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </a>
+                <a href="auth.html?tab=signup" class="btn btn-secondary">
+                    <i class="fas fa-user-plus"></i> Sign Up
+                </a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="floating-cards">
+                <div class="floating-card" style="--delay: 0s">
+                    <i class="fas fa-users"></i>
+                    <h3>User Management</h3>
+                </div>
+                <div class="floating-card" style="--delay: 1s">
+                    <i class="fas fa-building"></i>
+                    <h3>Departments</h3>
+                </div>
+                <div class="floating-card" style="--delay: 2s">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Leave Tracking</h3>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section class="features">
+        <h2 class="section-title">System Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-user-check"></i>
+                </div>
+                <h3>User Authentication</h3>
+                <p>Secure sign up, login, and password recovery system with email verification.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-id-card"></i>
+                </div>
+                <h3>Profile Management</h3>
+                <p>Complete user profiles with department assignment and contact information.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-sitemap"></i>
+                </div>
+                <h3>Department Directory</h3>
+                <p>Browse departments by campus and location with detailed information.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <h3>Leave Management</h3>
+                <p>Request and track leaves with approval workflow and calendar integration.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Stats -->
+    <section class="stats">
+        <div class="stat-card">
+            <i class="fas fa-users"></i>
+            <h3 id="userCount">1,250+</h3>
+            <p>Active Users</p>
+        </div>
+        <div class="stat-card">
+            <i class="fas fa-building"></i>
+            <h3 id="deptCount">24</h3>
+            <p>Departments</p>
+        </div>
+        <div class="stat-card">
+            <i class="fas fa-map-marker-alt"></i>
+            <h3 id="campusCount">5</h3>
+            <p>Campus Locations</p>
+        </div>
+        <div class="stat-card">
+            <i class="fas fa-calendar-day"></i>
+            <h3 id="leaveCount">89</h3>
+            <p>Active Leaves</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>University Portal</h3>
+                <p>Comprehensive management system for educational institutions and organizations.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="auth.html">Login/Signup</a></li>
+                    <li><a href="departments.html">Departments</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 123 University Ave, City</p>
+                <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+                <p><i class="fas fa-envelope"></i> info@universityportal.edu</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 University Portal System. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast"></div>
+</body>
+</html>

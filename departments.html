@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Portal | Departments</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-university"></i>
+                <span>University Portal</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="auth.html"><i class="fas fa-user"></i> Login</a></li>
+                <li><a href="departments.html" class="active"><i class="fas fa-building"></i> Departments</a></li>
+                <li><a href="leave.html"><i class="fas fa-calendar-alt"></i> Leave</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="departments-container">
+        <div class="departments-header">
+            <h1><i class="fas fa-sitemap"></i> Departments Directory</h1>
+            <p>Browse departments by campus and location</p>
+            
+            <div class="filters">
+                <div class="filter-group">
+                    <label for="campusFilter">
+                        <i class="fas fa-map-marker-alt"></i> Filter by Campus:
+                    </label>
+                    <select id="campusFilter">
+                        <option value="all">All Campuses</option>
+                        <option value="main">Main Campus</option>
+                        <option value="north">North Campus</option>
+                        <option value="south">South Campus</option>
+                        <option value="east">East Campus</option>
+                        <option value="west">West Campus</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="searchDepartment">
+                        <i class="fas fa-search"></i> Search:
+                    </label>
+                    <input type="text" id="searchDepartment" 
+                           placeholder="Search departments...">
+                </div>
+            </div>
+        </div>
+
+        <div class="departments-grid" id="departmentsGrid">
+            <!-- Departments will be dynamically loaded here -->
+        </div>
+
+        <div class="campus-map">
+            <h2><i class="fas fa-map"></i> Campus Locations</h2>
+            <div class="map-container">
+                <div class="map">
+                    <div class="map-point" style="top: 30%; left: 40%;" data-campus="main">
+                        <div class="point"></div>
+                        <div class="point-label">Main Campus</div>
+                    </div>
+                    <div class="map-point" style="top: 60%; left: 20%;" data-campus="north">
+                        <div class="point"></div>
+                        <div class="point-label">North Campus</div>
+                    </div>
+                    <div class="map-point" style="top: 70%; left: 60%;" data-campus="south">
+                        <div class="point"></div>
+                        <div class="point-label">South Campus</div>
+                    </div>
+                    <div class="map-point" style="top: 40%; left: 70%;" data-campus="east">
+                        <div class="point"></div>
+                        <div class="point-label">East Campus</div>
+                    </div>
+                    <div class="map-point" style="top: 20%; left: 20%;" data-campus="west">
+                        <div class="point"></div>
+                        <div class="point-label">West Campus</div>
+                    </div>
+                </div>
+                <div class="map-legend">
+                    <h3>Campus Information</h3>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background-color: #4a6fa5;"></span>
+                        <span>Main Campus - Central Location</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background-color: #6a994e;"></span>
+                        <span>North Campus - Engineering & Tech</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background-color: #bc4749;"></span>
+                        <span>South Campus - Medicine & Health</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background-color: #f39c12;"></span>
+                        <span>East Campus - Business & Law</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background-color: #8e44ad;"></span>
+                        <span>West Campus - Arts & Humanities</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="department-stats">
+            <h2><i class="fas fa-chart-bar"></i> Department Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>Total Departments</h3>
+                    <p class="stat-number" id="totalDepts">24</p>
+                </div>
+                <div class="stat-item">
+                    <h3>Total Employees</h3>
+                    <p class="stat-number" id="totalEmployees">1,250</p>
+                </div>
+                <div class="stat-item">
+                    <h3>Total Students</h3>
+                    <p class="stat-number" id="totalStudents">15,000</p>
+                </div>
+                <div class="stat-item">
+                    <h3>Average Department Size</h3>
+                    <p class="stat-number" id="avgDeptSize">52</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Department Details Modal -->
+    <div class="modal" id="departmentModal">
+        <div class="modal-content modal-lg">
+            <button class="modal-close" id="closeModal">&times;</button>
+            <div class="modal-body" id="modalBody">
+                <!-- Content loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>University Portal</h3>
+                <p>Comprehensive department management system</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="auth.html">Login</a></li>
+                    <li><a href="departments.html">Departments</a></li>
+                    <li><a href="leave.html">Leave Management</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <div id="toast" class="toast"></div>
+</body>
+</html>
